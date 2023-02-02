@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {matchpassword} from './matchpassword.validator'
 
 @Component({
   selector: 'my-app',
@@ -12,9 +13,13 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.myForm = new FormGroup({
       name: new FormControl('', Validators.required),
-      password: new FormControl(''),
-      confirmPassword: new FormControl(''),
-    });
+      password: new FormControl('', Validators.required),
+      confirmPassword: new FormControl('', Validators.required)
+    },
+    {
+      validators:matchpassword
+    }
+    );
   }
 
   onSubmit() {
